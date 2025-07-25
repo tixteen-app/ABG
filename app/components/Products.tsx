@@ -1,0 +1,188 @@
+"use client";
+import { Card, CardContent } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import { CheckCircle, Package, Printer, Factory, Settings, ArrowRight } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+
+export function Products() {
+  const features = [
+    "Fully Customizable Design & Branding",
+    "Advanced High-Barrier Protection",
+    "Multiple Diameter Options: 19mm to 35mm",
+    "Premium Aluminum & Plastic Materials",
+    "FDA Compliant Food-Grade Safety",
+    "Extended Shelf Life Protection"
+  ];
+
+  const capabilities = [
+    {
+      icon: <Printer className="h-8 w-8" />,
+      title: "8-Color Flexographic Printing",
+      description: "Advanced multi-color printing with perfect registration and vibrant color reproduction for exceptional brand presentation.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
+    },
+    {
+      icon: <Package className="h-8 w-8" />,
+      title: "ABL / PBL Tube Manufacturing",
+      description: "Premium aluminum and plastic barrier laminate tube production with superior quality control and precision engineering.",
+      image: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&h=400&fit=crop"
+    },
+    {
+      icon: <Factory className="h-8 w-8" />,
+      title: "Automated Production Lines",
+      description: "Fully automated tube body making with consistent quality, high-speed production, and minimal human intervention.",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&h=400&fit=crop"
+    },
+    {
+      icon: <Settings className="h-8 w-8" />,
+      title: "Precision Shoulder Heading",
+      description: "Semi & fully automatic shoulder and neck formation with German precision machinery for perfect finishing.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
+    }
+  ];
+
+  const scrollToContact = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section id="products" className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">Our Products</Badge>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Engineering Excellence in Packaging
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Precision-engineered solutions for FMCG, Pharma, and Personal Care industries 
+            with cutting-edge German and Japanese manufacturing technology.
+          </p>
+        </div>
+
+        {/* Hero Product */}
+        <Card className="mb-16 overflow-hidden border-border">
+          <CardContent className="p-0">
+            <div className="grid lg:grid-cols-2">
+              <div className="p-8 lg:p-12">
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="text-primary bg-primary/10 p-3 rounded-lg">
+                    <Package className="h-8 w-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground">Premium Laminated Tubes</h3>
+                    <p className="text-primary font-medium">Our Flagship Product Line</p>
+                  </div>
+                </div>
+                
+                <p className="text-muted-foreground mb-8 leading-relaxed">
+                  Revolutionary plastic and aluminum laminated tubes engineered for superior barrier protection, 
+                  exceptional durability, and stunning visual appeal. Perfect for pharmaceuticals, cosmetics, 
+                  food products, and industrial applications.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                  {features.map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-sm text-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <Badge className="bg-primary/10 text-primary border-primary/20">ISO-Certified Manufacturing</Badge>
+                  <Badge className="bg-primary/10 text-primary border-primary/20">ZEDX-Approved Facility</Badge>
+                  <Badge className="bg-primary/10 text-primary border-primary/20">Food-Grade Compliant</Badge>
+                </div>
+
+                <Button onClick={scrollToContact} className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
+                  Request Samples
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+
+              <div className="relative bg-gradient-to-br from-muted to-muted/50 p-8 flex items-center justify-center">
+                <ImageWithFallback 
+                  src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&h=400&fit=crop" 
+                  alt="Advanced Tube Manufacturing Equipment" 
+                  className="w-full max-w-md rounded-lg shadow-xl"
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Manufacturing Capabilities */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-bold text-foreground mb-4">Manufacturing Capabilities</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              State-of-the-art German & Japanese machinery ensuring world-class quality and precision in every product.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {capabilities.map((capability, index) => (
+              <Card key={index} className="border-border hover:shadow-lg transition-shadow group">
+                <CardContent className="p-0">
+                  <div className="grid md:grid-cols-5">
+                    <div className="md:col-span-3 p-8">
+                      <div className="flex items-start space-x-4 mb-6">
+                        <div className="text-primary bg-primary/10 p-3 rounded-lg group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                          {capability.icon}
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-bold text-foreground mb-2">{capability.title}</h4>
+                          <p className="text-muted-foreground leading-relaxed">{capability.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="md:col-span-2">
+                      <div className="relative h-48 md:h-full">
+                        <ImageWithFallback 
+                          src={capability.image} 
+                          alt={capability.title}
+                          className="w-full h-full object-cover rounded-r-lg"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Technology Showcase */}
+        <Card className="bg-foreground text-background border-border">
+          <CardContent className="p-8 lg:p-12 text-center">
+            <h3 className="text-2xl font-bold mb-4">German & Japanese Technology</h3>
+            <p className="text-background/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Our manufacturing facility features the latest precision machinery from Germany and Japan, 
+              ensuring unmatched quality, efficiency, and reliability in every product we deliver.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <div className="text-3xl font-bold text-primary mb-2">German</div>
+                <div className="text-background/70">Engineering Excellence</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary mb-2">Japanese</div>
+                <div className="text-background/70">Precision Technology</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary mb-2">100%</div>
+                <div className="text-background/70">Quality Assurance</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
