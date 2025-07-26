@@ -52,58 +52,123 @@ export function Hero() {
   ];
 
   const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    initial: { 
+      opacity: 0, 
+      y: 60,
+      filter: "blur(10px)"
+    },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      filter: "blur(0px)"
+    },
+    transition: { 
+      duration: 0.8, 
+      ease: [0.25, 0.1, 0.25, 1]
+    }
   };
 
   const staggerContainer = {
+    initial: {
+      opacity: 0
+    },
     animate: {
+      opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.15,
+        delayChildren: 0.3
       }
     }
   };
 
   const cardVariants = {
-    initial: { opacity: 0, y: 40, scale: 0.95 },
-    animate: { opacity: 1, y: 0, scale: 1 },
-    transition: { duration: 0.5, ease: "easeOut" }
+    initial: { 
+      opacity: 0, 
+      y: 40, 
+      scale: 0.9,
+      rotateX: 15
+    },
+    animate: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      rotateX: 0
+    },
+    hover: {
+      scale: 1.05,
+      y: -5,
+      transition: {
+        duration: 0.2,
+        ease: "easeOut"
+      }
+    },
+    transition: { 
+      duration: 0.6, 
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  };
+
+  const titleAnimation = {
+    initial: {
+      opacity: 0,
+      y: 30,
+      scale: 0.95
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1
+    }
   };
 
   if (!mounted) return null;
 
   return (
-    <section id="home" className="pt-20 pb-16 bg-muted/30" ref={ref}>
+    <section id="home" className="pt-20 pb-16 bg-muted/30 overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Badge */}
         <motion.div 
           className="text-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={{ opacity: 0, y: -20, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ 
+            duration: 0.6, 
+            delay: 0.1,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
         >
-      
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.2,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+          >
+            <Badge variant="outline" className="backdrop-blur-sm bg-background/30">
+              Welcome to ABG Pro Pack
+            </Badge>
+          </motion.div>
         </motion.div>
 
         {/* Hero Content */}
         <motion.div 
           className="text-center mb-16"
-          {...fadeInUp}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
         >
           <motion.h1 
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 leading-tight"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            variants={titleAnimation}
           >
             Premium Packaging & Advanced
             <br />
             <motion.span 
               className="text-primary block"
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               Manufacturing Solutions
@@ -113,7 +178,7 @@ export function Hero() {
           <motion.p 
             className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             Expert flexible tube manufacturing and advanced packaging solutions to help you achieve your quality goals.
@@ -124,7 +189,7 @@ export function Hero() {
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <Button 
@@ -145,16 +210,17 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* <motion.div 
+        <motion.div 
           className="grid lg:grid-cols-4 gap-6"
           variants={staggerContainer}
           initial="initial"
-          animate={isVisible ? "animate" : "initial"}
+          whileInView={isVisible ? "animate" : "initial"}
         >
           {portfolioItems.map((item, index) => (
             <motion.div
               key={index}
-              variants={cardVariants}
+              initial={{ opacity: 0, y: 40, scale: 0.9, rotateX: 15 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
@@ -174,19 +240,46 @@ export function Hero() {
                         className="w-full h-full object-cover"
                       />
                     </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <Badge className="bg-primary/90 text-primary-foreground mb-2">
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.2 * index, duration: 0.5 }}
+                    />
+                    <motion.div 
+                      className="absolute bottom-4 left-4 right-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 * index, duration: 0.5 }}
+                    >
+                      <Badge 
+                        className="bg-primary/90 text-primary-foreground mb-2"
+                      >
                         {item.category}
                       </Badge>
-                      <h3 className="text-white font-semibold text-sm mb-1">{item.title}</h3>
-                      <p className="text-white/80 text-xs">{item.description}</p>
-                    </div>
+                      <motion.h3 
+                        className="text-white font-semibold text-sm mb-1"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 * index, duration: 0.5 }}
+                      >
+                        {item.title}
+                      </motion.h3>
+                      <motion.p 
+                        className="text-white/80 text-xs"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.5 * index, duration: 0.5 }}
+                      >
+                        {item.description}
+                      </motion.p>
+                    </motion.div>
                     <motion.div 
                       className="absolute top-4 right-4"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileHover={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, scale: 0.8, rotate: -180 }}
+                      whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                      whileHover={{ scale: 1.1, rotate: 90 }}
+                      transition={{ delay: 0.3 * index, duration: 0.3 }}
                     >
                       <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
                         <ExternalLink className="h-4 w-4 text-white" />
@@ -197,7 +290,7 @@ export function Hero() {
               </Card>
             </motion.div>
           ))}
-        </motion.div> */}
+        </motion.div>
       </div>
     </section>
   );

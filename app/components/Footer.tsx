@@ -1,6 +1,17 @@
 "use client";
 import { Button } from "./ui/button";
-import { ArrowUp, Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter, Dribbble } from "lucide-react";
+import { ArrowUp, Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Dribbble } from "lucide-react";
+
+const XIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    className={className} 
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 export function Footer() {
   const scrollToTop = () => {
@@ -43,7 +54,7 @@ export function Footer() {
 
   const socialLinks = [
     { icon: <Linkedin className="h-5 w-5" />, href: "#", name: "LinkedIn" },
-    { icon: <Twitter className="h-5 w-5" />, href: "#", name: "Twitter" },
+    { icon: <XIcon className="h-5 w-5" />, href: "#", name: "X" },
     { icon: <Instagram className="h-5 w-5" />, href: "#", name: "Instagram" },
     { icon: <Facebook className="h-5 w-5" />, href: "#", name: "Facebook" },
   ];
@@ -150,7 +161,7 @@ export function Footer() {
             </p>
             <div className="flex items-center space-x-6">
               <p className="text-background/60">
-                86, Phase 1, HSIIDC, Kundli, Haryana-131028, India
+                created by <a href="https://www.pitamaas.com/" className="text-primary hover:underline">Pitamaas PVT</a>
               </p>
             </div>
           </div>
