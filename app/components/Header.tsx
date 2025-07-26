@@ -119,6 +119,17 @@ export function Header() {
             >
               About
             </motion.button>
+
+      {/* contact us  */}
+        <motion.button
+              onClick={() => scrollToSection("contact")}
+              className="text-md font-medium text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Contact Us
+            </motion.button>
+
             {/* Services Dropdown */}
             <div 
               className="relative"

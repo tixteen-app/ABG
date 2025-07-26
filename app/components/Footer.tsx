@@ -46,7 +46,6 @@ export function Footer() {
     { icon: <Twitter className="h-5 w-5" />, href: "#", name: "Twitter" },
     { icon: <Instagram className="h-5 w-5" />, href: "#", name: "Instagram" },
     { icon: <Facebook className="h-5 w-5" />, href: "#", name: "Facebook" },
-    { icon: <Dribbble className="h-5 w-5" />, href: "#", name: "Dribbble" }
   ];
 
   return (
@@ -60,13 +59,13 @@ export function Footer() {
               <img 
                 src="/ABG_Logo.png" 
                 alt="ABG Pro Pack" 
-                className="h-12 w-12 object-contain invert"
+                className="h-24 w-24 object-contain invert"
               />
             </div>
             
             <p className="text-background/80 mb-6 leading-relaxed">
-              India, Rajasthan, Bangalore,<br />
-              Karnataka, 560021
+              86, Phase 1, HSIIDC, Kundli,<br />
+              Haryana-131028
             </p>
             
             <div className="space-y-3 mb-6">

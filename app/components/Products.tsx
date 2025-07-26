@@ -20,25 +20,25 @@ export function Products() {
       icon: <Printer className="h-8 w-8" />,
       title: "8-Color Flexographic Printing",
       description: "Advanced multi-color printing with perfect registration and vibrant color reproduction for exceptional brand presentation.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
+      image: "https://5.imimg.com/data5/SELLER/Default/2024/10/460946938/PD/BR/VU/5908514/8-colour-flexographic-printing-machine.jpg"
     },
     {
       icon: <Package className="h-8 w-8" />,
       title: "ABL / PBL Tube Manufacturing",
       description: "Premium aluminum and plastic barrier laminate tube production with superior quality control and precision engineering.",
-      image: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&h=400&fit=crop"
+      image: "https://www.stspackbg.com/wp-content/uploads/2022/06/Diagram-ABL-1-1.jpg"
     },
     {
       icon: <Factory className="h-8 w-8" />,
       title: "Automated Production Lines",
       description: "Fully automated tube body making with consistent quality, high-speed production, and minimal human intervention.",
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&h=400&fit=crop"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcEKr3RtjbEuWdKR0XJUnQr3KtXwWC9teELQ&s"
     },
     {
       icon: <Settings className="h-8 w-8" />,
       title: "Precision Shoulder Heading",
       description: "Semi & fully automatic shoulder and neck formation with German precision machinery for perfect finishing.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
+      image: "https://fastenerandfixing.com/media/42373/wds.jpg?width=1090&height=780&rnd=133065828046100000"
     }
   ];
 
@@ -106,9 +106,9 @@ export function Products() {
                 </Button>
               </div>
 
-              <div className="relative bg-gradient-to-br from-muted to-muted/50 p-8 flex items-center justify-center">
+              <div className="relative bg-white-to-br from-muted to-muted/50 p-8 flex items-center justify-center">
                 <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&h=400&fit=crop" 
+                  src="https://cdn.berryglobal.com/product-images/13184004/1.1875%20M8%20Lam%20Tubes%20and%20Closures.jpg" 
                   alt="Advanced Tube Manufacturing Equipment" 
                   className="w-full max-w-md rounded-lg shadow-xl"
                 />

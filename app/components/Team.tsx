@@ -6,36 +6,38 @@ import { Linkedin, Mail, Award } from "lucide-react";
 export function Team() {
   const teamMembers = [
     {
-      name: "Rajesh Kumar",
-      role: "Managing Director & Founder",
-      initials: "RK",
-      description: "Visionary leader with 25+ years in packaging industry, driving innovation and strategic growth across global markets.",
-      expertise: ["Strategic Leadership", "Business Development", "Industry Innovation"],
-      achievement: "Founded 3 successful ventures"
+      name: "Tanishka Aggarwal",
+      role: "Director",
+      initials: "TA",
+      image: "/tanishka.png",
+      description: "Visionary director leading strategic initiatives and driving company growth through innovative approaches.",
+      expertise: ["Strategic Planning", "Business Development", "Leadership"],
+      achievement: "Key strategic partnerships established"
     },
     {
-      name: "Priya Sharma",
-      role: "Head of Operations",
-      initials: "PS",
-      description: "Operations excellence expert ensuring seamless production flow, quality management, and operational efficiency.",
-      expertise: ["Operations Management", "Quality Systems", "Process Optimization"],
-      achievement: "20+ years operations experience"
+      name: "Ansh Bansal",
+      role: "Director",
+      initials: "AB",
+      image: "/ansh.png",
+      description: "Dynamic director focusing on operational excellence and business expansion strategies.",
+      expertise: ["Operations Management", "Strategic Planning", "Business Growth"],
+      achievement: "Significant market expansion"
     },
     {
-      name: "Amit Singh",
-      role: "Sales & Business Director",
-      initials: "AS",
-      description: "Strategic sales leader building lasting partnerships, driving business growth, and expanding market presence nationwide.",
-      expertise: ["Sales Strategy", "Client Relations", "Market Expansion"],
-      achievement: "₹100Cr+ revenue generated"
+      name: "Krishna Goyal",
+      role: "Sales",
+      initials: "KG",
+      description: "Experienced sales professional driving business growth through strategic client relationships.",
+      expertise: ["Sales Strategy", "Client Relations", "Market Development"],
+      achievement: "Consistently exceeding targets"
     },
     {
-      name: "Dr. Sunita Verma",
-      role: "Technical Director & R&D Head",
-      initials: "SV",
-      description: "Technical excellence pioneer driving innovation, quality assurance, and next-generation R&D initiatives.",
-      expertise: ["R&D Leadership", "Quality Assurance", "Technical Innovation"],
-      achievement: "Ph.D. in Material Science"
+      name: "Jagrit Aggarwal",
+      role: "Sales",
+      initials: "JA",
+      description: "Results-driven sales expert focused on building and maintaining key client partnerships.",
+      expertise: ["Business Development", "Client Management", "Sales Strategy"],
+      achievement: "Strong client portfolio growth"
     }
   ];
 
@@ -61,9 +63,13 @@ export function Team() {
               <CardContent className="p-8">
                 <div className="flex items-start space-x-6">
                   <Avatar className="w-20 h-20 bg-primary text-primary-foreground">
-                    <AvatarFallback className="bg-primary text-primary-foreground text-xl font-bold">
-                      {member.initials}
-                    </AvatarFallback>
+                    {member.image ? (
+                      <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <AvatarFallback className="bg-primary text-primary-foreground text-xl font-bold">
+                        {member.initials}
+                      </AvatarFallback>
+                    )}
                   </Avatar>
                   
                   <div className="flex-1">
