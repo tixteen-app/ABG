@@ -2,10 +2,39 @@
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { CheckCircle, Package, Printer, Factory, Settings, ArrowRight } from "lucide-react";
+import { CheckCircle, Package, Printer, Factory, Settings, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export function Products() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === capabilities.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? capabilities.length - 1 : prev - 1));
+  };
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+    
+    if (isAutoPlaying) {
+      intervalId = setInterval(() => {
+        nextSlide();
+      }, 5000); // Change slide every 5 seconds
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isAutoPlaying]);
+
   const features = [
     "Fully Customizable Design & Branding",
     "Advanced High-Barrier Protection",
@@ -126,35 +155,69 @@ export function Products() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {capabilities.map((capability, index) => (
-              <Card key={index} className="border-border hover:shadow-lg transition-shadow group">
-                <CardContent className="p-0">
-                  <div className="grid md:grid-cols-5">
-                    <div className="md:col-span-3 p-8">
-                      <div className="flex items-start space-x-4 mb-6">
-                        <div className="text-primary bg-primary/10 p-3 rounded-lg group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          {capability.icon}
+          <div className="relative max-w-4xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+                className="w-full"
+              >
+                <Card className="border-border hover:shadow-lg transition-shadow group h-[400px]">
+                  <CardContent className="p-0 h-full">
+                    <div className="grid md:grid-cols-5 h-full">
+                      <div className="md:col-span-3 p-8 flex flex-col">
+                        <div className="flex items-start space-x-4 mb-6">
+                          <div className="text-primary bg-primary/10 p-3 rounded-lg group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            {capabilities[currentIndex].icon}
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-bold text-foreground mb-2">{capabilities[currentIndex].title}</h4>
+                            <p className="text-muted-foreground leading-relaxed">{capabilities[currentIndex].description}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="text-lg font-bold text-foreground mb-2">{capability.title}</h4>
-                          <p className="text-muted-foreground leading-relaxed">{capability.description}</p>
+                      </div>
+                      <div className="md:col-span-2 relative h-full overflow-hidden">
+                        <div className="absolute inset-0">
+                          <ImageWithFallback 
+                            src={capabilities[currentIndex].image} 
+                            alt={capabilities[currentIndex].title}
+                            className="w-full h-full object-contain object-center rounded-r-lg"
+                          />
                         </div>
                       </div>
                     </div>
-                    <div className="md:col-span-2">
-                      <div className="relative h-48 md:h-full">
-                        <ImageWithFallback 
-                          src={capability.image} 
-                          alt={capability.title}
-                          className="w-full h-full object-cover rounded-r-lg"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </AnimatePresence>
+
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-background p-2 rounded-full shadow-lg border border-border hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-background p-2 rounded-full shadow-lg border border-border hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            <div className="flex justify-center mt-4 space-x-2">
+              {capabilities.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentIndex ? "bg-primary" : "bg-primary/20"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 

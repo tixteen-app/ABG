@@ -120,17 +120,7 @@ export function Header() {
               About
             </motion.button>
 
-      {/* contact us  */}
-        <motion.button
-              onClick={() => scrollToSection("contact")}
-              className="text-xl font-medium text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              Contact Us
-            </motion.button>
-
-            {/* Services Dropdown */}
+  {/* Services Dropdown */}
             <div 
               className="relative"
               onMouseEnter={() => setActiveDropdown("services")}
@@ -176,6 +166,18 @@ export function Header() {
               </AnimatePresence>
             </div>
 
+
+      {/* contact us  */}
+        <motion.button
+              onClick={() => scrollToSection("contact")}
+              className="text-xl font-medium text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Contact Us
+            </motion.button>
+
+          
 
 
             {/* about */}
