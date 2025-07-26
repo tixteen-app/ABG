@@ -20,13 +20,13 @@ export function Products() {
       icon: <Printer className="h-8 w-8" />,
       title: "8-Color Flexographic Printing",
       description: "Advanced multi-color printing with perfect registration and vibrant color reproduction for exceptional brand presentation.",
-      image: "https://5.imimg.com/data5/SELLER/Default/2024/10/460946938/PD/BR/VU/5908514/8-colour-flexographic-printing-machine.jpg"
+      image: "/8-colour.png"
     },
     {
       icon: <Package className="h-8 w-8" />,
       title: "ABL / PBL Tube Manufacturing",
       description: "Premium aluminum and plastic barrier laminate tube production with superior quality control and precision engineering.",
-      image: "https://www.stspackbg.com/wp-content/uploads/2022/06/Diagram-ABL-1-1.jpg"
+      image: "tube.png"
     },
     {
       icon: <Factory className="h-8 w-8" />,

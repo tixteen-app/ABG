@@ -161,7 +161,7 @@ export function Footer() {
             </p>
             <div className="flex items-center space-x-6">
               <p className="text-background/60">
-                created by <a href="https://www.pitamaas.com/" className="text-primary hover:underline">Pitamaas PVT</a>
+                created by <a href="https://www.pitamaas.com/" className="text-primary hover:underline">Pitamaas PVT. LTD</a>
               </p>
             </div>
           </div>

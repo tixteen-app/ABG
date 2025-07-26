@@ -99,12 +99,12 @@ export function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-12">
 
             
             <motion.button
               onClick={() => scrollToSection("home")}
-              className="text-md font-medium text-foreground hover:text-primary transition-colors"
+              className="text-xl font-medium text-foreground hover:text-primary transition-colors"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
@@ -113,7 +113,7 @@ export function Header() {
 
                 <motion.button
               onClick={() => scrollToSection("about")}
-              className="text-md font-medium text-foreground hover:text-primary transition-colors"
+              className="text-xl font-medium text-foreground hover:text-primary transition-colors"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
@@ -121,7 +121,14 @@ export function Header() {
             </motion.button>
 
       {/* contact us  */}
-     
+        <motion.button
+              onClick={() => scrollToSection("contact")}
+              className="text-xl font-medium text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Contact Us
+            </motion.button>
 
             {/* Services Dropdown */}
             <div 
@@ -130,7 +137,7 @@ export function Header() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <motion.button 
-                className="flex items-center space-x-1 text-md font-medium text-foreground hover:text-primary transition-colors"
+                className="flex items-center space-x-2 text-xl font-medium text-foreground hover:text-primary transition-colors"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -169,15 +176,6 @@ export function Header() {
               </AnimatePresence>
             </div>
 
-               <motion.button
-              onClick={() => scrollToSection("contact")}
-              className="text-md font-medium text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              Contact Us
-            </motion.button>
-
 
 
             {/* about */}
@@ -194,7 +192,7 @@ export function Header() {
             >
               <Button 
                 onClick={() => scrollToSection("contact")}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-2 text-lg"
               >
                 Book a Call
               </Button>
