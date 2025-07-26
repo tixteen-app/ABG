@@ -100,6 +100,25 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
+
+            
+            <motion.button
+              onClick={() => scrollToSection("home")}
+              className="text-md font-medium text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Home
+            </motion.button>
+
+                <motion.button
+              onClick={() => scrollToSection("about")}
+              className="text-md font-medium text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              About
+            </motion.button>
             {/* Services Dropdown */}
             <div 
               className="relative"
@@ -107,7 +126,7 @@ export function Header() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <motion.button 
-                className="flex items-center space-x-1 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="flex items-center space-x-1 text-md font-medium text-foreground hover:text-primary transition-colors"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -132,7 +151,7 @@ export function Header() {
                       <motion.button
                         key={service.name}
                         onClick={() => scrollToSection(service.id)}
-                        className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                        className="w-full text-left px-4 py-2 text-md text-foreground hover:bg-muted transition-colors"
                         whileHover={{ x: 4, backgroundColor: "var(--muted)" }}
                         transition={{ duration: 0.2 }}
                         initial={{ opacity: 0, x: -10 }}
@@ -146,70 +165,10 @@ export function Header() {
               </AnimatePresence>
             </div>
 
-            {/* Industries Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setActiveDropdown("industries")}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <motion.button 
-                className="flex items-center space-x-1 text-sm font-medium text-foreground hover:text-primary transition-colors"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span>Industries</span>
-                <motion.div
-                  animate={{ rotate: activeDropdown === "industries" ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ChevronDown size={16} />
-                </motion.div>
-              </motion.button>
-              <AnimatePresence>
-                {activeDropdown === "industries" && (
-                  <motion.div 
-                    className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-xl py-2"
-                    variants={dropdownVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                  >
-                    {industries.map((industry, index) => (
-                      <motion.button
-                        key={industry.name}
-                        onClick={() => scrollToSection(industry.id)}
-                        className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                        whileHover={{ x: 4 }}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2, delay: index * 0.05 }}
-                      >
-                        {industry.name}
-                      </motion.button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
 
-            <motion.button
-              onClick={() => scrollToSection("home")}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              Home
-            </motion.button>
 
             {/* about */}
-            <motion.button
-              onClick={() => scrollToSection("about")}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              About
-            </motion.button>
+        
            
           </nav>
 
@@ -287,7 +246,7 @@ export function Header() {
                   <motion.button
                     key={item.name}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-3 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                    className="block w-full text-left px-3 py-2 text-md font-medium text-foreground hover:text-primary transition-colors"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}

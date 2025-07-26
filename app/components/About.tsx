@@ -15,13 +15,13 @@ export function About() {
       icon: <Award className="h-6 w-6" />,
       value: "2025",
       label: "Founded",
-      description: "Industry expertise since establishment"
+      description: "Industry expertise "
     },
     {
       icon: <Users className="h-6 w-6" />,
       value: "50+",
       label: "Expert Team",
-      description: "Skilled professionals driving innovation"
+      description: "Skilled  driving innovation"
     },
     {
       icon: <Globe className="h-6 w-6" />,
