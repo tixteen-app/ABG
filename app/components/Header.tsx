@@ -51,35 +51,25 @@ export function Header() {
     hidden: { 
       opacity: 0, 
       y: -10, 
-      scale: 0.95,
-      transition: { duration: 0.2 }
+      scale: 0.95
     },
     visible: { 
       opacity: 1, 
       y: 0, 
-      scale: 1,
-      transition: { 
-        duration: 0.3,
-        ease: "easeOut"
-      }
+      scale: 1
     }
-  };
+  } as const;
 
   const mobileMenuVariants = {
     hidden: { 
       opacity: 0, 
-      height: 0,
-      transition: { duration: 0.2 }
+      height: 0
     },
     visible: { 
       opacity: 1, 
-      height: "auto",
-      transition: { 
-        duration: 0.3,
-        ease: "easeOut"
-      }
+      height: "auto"
     }
-  };
+  } as const;
 
   return (
     <motion.header 
@@ -147,7 +137,6 @@ export function Header() {
                         transition={{ duration: 0.2 }}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2, delay: index * 0.05 }}
                       >
                         {service.name}
                       </motion.button>
@@ -221,52 +210,7 @@ export function Header() {
             >
               About
             </motion.button>
-
-            {/* Company Dropdown */}
-            {/* <div 
-              className="relative"
-              onMouseEnter={() => setActiveDropdown("company")}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <motion.button 
-                className="flex items-center space-x-1 text-sm font-medium text-foreground hover:text-primary transition-colors"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span>Company</span>
-                <motion.div
-                  animate={{ rotate: activeDropdown === "company" ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ChevronDown size={16} />
-                </motion.div>
-              </motion.button>
-              <AnimatePresence>
-                {activeDropdown === "company" && (
-                  <motion.div 
-                    className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-xl py-2"
-                    variants={dropdownVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                  >
-                    {company.map((item, index) => (
-                      <motion.button
-                        key={item.name}
-                        onClick={() => scrollToSection(item.id)}
-                        className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                        whileHover={{ x: 4 }}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2, delay: index * 0.05 }}
-                      >
-                        {item.name}
-                      </motion.button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div> */}
+           
           </nav>
 
           {/* CTA Button */}
@@ -328,6 +272,10 @@ export function Header() {
               initial="hidden"
               animate="visible"
               exit="hidden"
+              transition={{ 
+                duration: 0.3,
+                ease: "easeOut"
+              }}
             >
               <div className="py-4 space-y-3">
                 {[
